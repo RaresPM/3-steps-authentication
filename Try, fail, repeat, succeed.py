@@ -1,34 +1,48 @@
 # Autentificare in trei pasi !
 
 def getnume():
-    nume = "JohnnyCage"
+    count = 3
+    name = "JohnnyCage"
     input1 = input("Introduceti numele dorit: ")
-    while nume != input1:
-        print("Numele introdus este gresit!Incercati din nou!")
-        input1 = input("Introuceti numele dorit: ")
-    return nume
+    while name != input1:
+        if count > 0:
+            print("Numele este gresit!Mai aveti " + str(count - 1) + " incercari! Incercati din nou!")
+            input1 = input("Introduceti numele: ")
+            count -= 1
+        if name == input1:
+            print("Ati introdus numele corect! Treceti la urmatoarea etapa.")
+        elif count == 0:
+            print("Ati atins limita de incercari!Incercati peste 3 ore!")
+            count -= 1
+        elif count == 3:
+            break
+    return input1
 
 
 def getuser():
+    count = 3
     userinput = "MortalKombat"
-    string = input("Introduceti userul: ")
-    while string != userinput:
-        print("Userul este gresit! Incercati din nou!")
-        string = input("Introduceti userul: ")
-    return string
-
+    user = input("Introduceti userul: ")
+    while user != userinput:
+        if count > 0:
+            print("Userul este gresit!Mai aveti " + str(count - 1) + " incercari! Incercati din nou!")
+            user = input("Introduceti userul: ")
+            count -= 1
+        if user == userinput:
+            print("Ati introdus userul corect! Treceti la urmatoarea etapa.")
+        elif count == 0:
+            print("Ati atins limita de incercari! Incercati peste 3 ore!")
+            count -= 1
+        elif count == 3:
+            break
+    return user
 
 def getparola():
     parola = input("Introduceti parola: ")
-    while len(parola) < 6:
+    while len(parola) < 8:
         print("Parola este prea scurta!")
         parola = input("Introduceti parola: ")
     return parola
-
-
-nume = getnume()
-string = getuser()
-parola = getparola()
 
 
 def parolasecurizata(parola):
@@ -36,10 +50,9 @@ def parolasecurizata(parola):
     return parola_sec
 
 
-def getinfo(nume, string, parola):
-    return nume, string, parola
-
-
+numele = getnume()
+string = getuser()
+parola = getparola()
 parola_strong = parolasecurizata(parola)
-print("Date de autentificare sunt : " + nume + "," + string + "," + parola)
+print("Datele de autentificare sunt : " + numele + "," + string + "," + parola)
 print("Parola", parola, " a fost securizata si este", parola_strong)
